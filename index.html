@@ -21,6 +21,15 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 input[type=date],input[type=time]{width:100%;max-width:100%;min-width:0;-webkit-appearance:none;appearance:none;text-align:left;}
 .inp{min-width:0;max-width:100%;}
+.card,.mgr-body{min-width:0;max-width:100%;}
+.mgr-body{overflow-x:hidden;}
+.w-row{min-width:0;max-width:100%;}
+.w-row>div:nth-child(2){min-width:0;}
+.w-name{overflow-wrap:normal;word-break:normal;}
+.w-sub{overflow-wrap:anywhere;}
+.w-row .btn-sm{padding:8px 10px;}
+.inp-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+.sel,.inp{min-width:0;}
 canvas,.sig-outer{touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;}
 html,body{touch-action:manipulation;overscroll-behavior-x:none;}
 html,body{width:100%;min-height:100%;overflow-x:hidden;-webkit-text-size-adjust:100%;}
@@ -83,7 +92,7 @@ body{font-family:'Noto Sans',Arial,sans-serif;background:var(--gp);color:var(--i
 .mgr-tabs{display:flex;gap:2px;margin-top:10px;}
 .mgr-tab{flex:1;padding:7px 1px;font-size:9px;font-weight:700;font-family:'Noto Sans',Arial,sans-serif;border:none;cursor:pointer;background:transparent;color:rgba(255,255,255,.5);border-radius:10px 10px 0 0;transition:all .18s;}
 .mgr-tab.on{background:var(--gp);color:var(--g);}
-.mgr-body{max-width:640px;margin:0 auto;padding:16px 16px 80px;}
+.mgr-body{width:100%;max-width:640px;margin:0 auto;padding:16px 16px 80px;}
 .stat-row{display:flex;gap:8px;margin-bottom:14px;}
 .stat-box{flex:1;background:var(--wh);border:1px solid var(--bdr);border-radius:14px;padding:14px 8px;text-align:center;}
 .stat-ico{font-size:18px;margin-bottom:4px;}
@@ -150,9 +159,9 @@ body{font-family:'Noto Sans',Arial,sans-serif;background:var(--gp);color:var(--i
 .dept-bar-head2{display:flex;justify-content:space-between;margin-bottom:3px;}
 .dept-bar-track2{background:var(--gm);border-radius:5px;height:8px;overflow:hidden;}
 .dept-bar-fill2{height:100%;border-radius:5px;transition:width .5s ease;}
-.rpt-tbl-head{display:grid;grid-template-columns:24px 1fr 90px 70px 60px 100px 100px;align-items:center;gap:6px;padding:8px 12px;background:var(--gd);color:rgba(255,255,255,.7);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:10px 10px 0 0;}
+.rpt-tbl-head{display:grid;grid-template-columns:24px minmax(0,1fr) 90px 70px 60px 100px 100px;align-items:center;gap:6px;padding:8px 12px;background:var(--gd);color:rgba(255,255,255,.7);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:10px 10px 0 0;}
 .rpt-tbl-head .col-rpt-sig{background:#ffffff;display:flex;align-items:center;justify-content:center;}
-.rpt-tbl-row{display:grid;grid-template-columns:24px 1fr 90px 70px 60px 100px 100px;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--gp);transition:background .1s;font-size:12px;}
+.rpt-tbl-row{display:grid;grid-template-columns:24px minmax(0,1fr) 90px 70px 60px 100px 100px;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--gp);transition:background .1s;font-size:12px;}
 .rpt-tbl-row:last-child{border-bottom:none;}
 .rpt-tbl-row:hover{background:#f4f8ff;}
 .rpt-tbl-row.fail-r{background:#fff9f0;}
@@ -165,8 +174,17 @@ body{font-family:'Noto Sans',Arial,sans-serif;background:var(--gp);color:var(--i
 .rpt-sig-box.has-sig .rpt-sig-hint{opacity:0;}
 .rpt-sig-clr{position:absolute;top:1px;right:2px;background:rgba(231,76,60,.8);color:#fff;border:none;border-radius:3px;padding:1px 4px;font-size:8px;cursor:pointer;display:none;}
 .rpt-sig-box.has-sig .rpt-sig-clr{display:block;}
-@media(max-width:500px){.rpt-tbl-head,.rpt-tbl-row{grid-template-columns:20px 1fr 70px 50px 80px 80px;}.col-rpt-time{display:none;}}
-@media(max-width:700px){.rpt-tbl-head,.rpt-tbl-row{grid-template-columns:20px 1fr 80px 55px 90px;}.col-rpt-time{display:none;}}
+@media(max-width:500px){
+.rpt-tbl-head,.rpt-tbl-row{grid-template-columns:18px minmax(0,1fr) 64px 62px 62px;gap:4px;padding:8px 8px;}
+.rpt-tbl-head>:nth-child(3),.rpt-tbl-row>:nth-child(3),.col-rpt-time{display:none;}
+.rpt-tbl-head{font-size:8px;letter-spacing:0;line-height:1.15;}
+.rpt-tbl-head>div{overflow-wrap:anywhere;min-width:0;}
+.rpt-sig-box,.rpt-tbl-row .col-rpt-sig,.rpt-tbl-row>div{min-width:0;}
+.rpt-sig-box{width:100%;}
+.rpt-sig-box canvas{width:100%;}
+.rpt-stats{grid-template-columns:repeat(3,minmax(0,1fr));}
+}
+@media(min-width:501px) and (max-width:700px){.rpt-tbl-head,.rpt-tbl-row{grid-template-columns:20px 1fr 80px 55px 90px;}.col-rpt-time{display:none;}}
 
 @media print{.rpt-header{background:#1a4a8a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:2px;}
@@ -947,7 +965,7 @@ function buildDetailReport(body, selDate, dateRecs) {
   const _mgrName=_mgrData?(_mgrData.name||"Менежер"):"";
 
   // Table head — менежерийн г/ү багана нэмэгдсэн
-  tblCard.appendChild(h("div",{className:"rpt-tbl-head",style:{gridTemplateColumns:"24px 1fr 90px 70px 60px 100px 100px"}},[
+  tblCard.appendChild(h("div",{className:"rpt-tbl-head"},[
     h("div",{},[" # "]),
     h("div",{},[" Ажилтан "]),
     h("div",{},[" Тасаг "]),
@@ -966,7 +984,7 @@ function buildDetailReport(body, selDate, dateRecs) {
     const filtered=curFilt==="all"?dateRecs:dateRecs.filter(r=>r.department===curFilt);
     filtered.forEach((r,idx)=>{
       const hasSig=!!sigs[r.name];
-      const row=el("div",{className:"rpt-tbl-row"+(r.passed?"":" fail-r"),style:{gridTemplateColumns:"24px 1fr 90px 70px 60px 100px 100px"}});
+      const row=el("div",{className:"rpt-tbl-row"+(r.passed?"":" fail-r")});
       // #
       row.appendChild(h("div",{style:{fontSize:"10px",color:"var(--mut)",fontWeight:"700",textAlign:"center"}},[String(idx+1)]));
       // Ажилтан
@@ -1456,22 +1474,10 @@ function showInstrPin(onSuccess){
     const pin=pinInp.value.trim();
     if(!pin){errMsg.textContent="PIN оруулна уу";return;}
 
-    // PIN шалгах — менежерийн PIN-тэй ижил логик
-    const cfg=lsGet(K.cfg)||{};
-    const storedHash=cfg.pinHash||"";
-
-    // Default PIN: 1234
-    let targetHash=storedHash;
-    if(!storedHash){
-      // Хадгалагдсан hash байхгүй бол default 1234
-      const enc=new TextEncoder();
-      const buf=await crypto.subtle.digest("SHA-256",enc.encode("1234"));
-      targetHash=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");
-    }
-
-    const enc=new TextEncoder();
-    const buf=await crypto.subtle.digest("SHA-256",enc.encode(pin));
-    const hash=Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");
+    // PIN шалгах — менежерийн PIN-тэй яг ижил (нэг PIN хадгалалт)
+    let targetHash=getPin();
+    if(!targetHash){targetHash=await hashPin(DEFAULT_PIN);}
+    const hash=await hashPin(pin);
 
     if(hash===targetHash){
       overlay.remove();
@@ -1581,7 +1587,7 @@ function renderInstrLog(){
   nw.appendChild(nameInp); sec1.appendChild(nw);
 
   // Ажлын байр, тасаг
-  const deptRow=h("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"8px",marginBottom:"10px"}});
+  const deptRow=h("div",{style:{display:"grid",gridTemplateColumns:"minmax(0,1fr) minmax(0,1fr)",gap:"8px",marginBottom:"10px"}});
   const dw=el("div");
   dw.appendChild(h("div",{className:"inp-label"},["Тасаг *"]));
   const deptSel=el("select",{className:"sel"});
@@ -1666,7 +1672,7 @@ function renderInstrLog(){
   sec2.appendChild(contentWrap);
 
   // Зааварчилгааны дугаар (дэвтрийн)
-  const nrw=el("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"8px",marginBottom:"10px"}});
+  const nrw=el("div",{style:{display:"grid",gridTemplateColumns:"minmax(0,1fr) minmax(0,1fr)",gap:"8px",marginBottom:"10px"}});
   const nr1=el("div");
   nr1.appendChild(h("div",{className:"inp-label"},["Бүртгэлийн дугаар"]));
   const numInp=el("input",{className:"inp",type:"text",placeholder:"№"});
@@ -1740,7 +1746,7 @@ function renderInstrLog(){
   sigClr.onclick=()=>{if(iCtx){iCtx.clearRect(0,0,sigCv.width,sigCv.height);sigHint.style.opacity="1";iDrawn=false;}};
 
   // Зааварчилгаа өгсөн хүний мэдээлэл
-  const mgrRow=h("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"8px",marginBottom:"10px"}});
+  const mgrRow=h("div",{style:{display:"grid",gridTemplateColumns:"minmax(0,1fr) minmax(0,1fr)",gap:"8px",marginBottom:"10px"}});
   const m1=el("div");
   m1.appendChild(h("div",{className:"inp-label"},["Зааварчилгаа өгсөн хүний нэр *"]));
   const mgrNameInp=el("input",{className:"inp",type:"text",placeholder:"Нэр"});
@@ -3262,14 +3268,17 @@ function renderManager(onLogout){
       const deptStats=DEPTS_LIST.map(dept=>{
         const dw=workers.filter(w=>w.department===dept);
         const ds=todayRecs.filter(r=>r.department===dept);
-        const pct=dw.length>0?Math.round(ds.length/dw.length*100):0;
-        return{dept,total:dw.length,signed:ds.length,pct};
+        const _tot=Math.max(dw.length,ds.length);
+        const pct=_tot>0?Math.min(100,Math.round(ds.length/_tot*100)):0;
+        return{dept,total:_tot,signed:ds.length,pct};
       }).filter(d=>d.total>0);
-      const _totPct=workers.length>0?Math.round(todayRecs.length/workers.length*100):0;
+      const _extraSigned=todayRecs.filter(r=>!workers.some(w=>normName(w.name)===normName(r.name))).length;
+      const _totAll=workers.length+_extraSigned;
+      const _totPct=_totAll>0?Math.min(100,Math.round(todayRecs.length/_totAll*100)):0;
       const _statCard=el("div",{className:"card fadeUp"});
       _statCard.appendChild(h("div",{className:"card-head"},["📊 Өнөөдрийн нийт байдал"]));
       const _bigStat=el("div",{style:{display:"flex",gap:"8px",marginBottom:"16px"}});
-      [{l:"Нийт",v:workers.length,i:"👥",c:"var(--ink)"},{l:"Ирсэн",v:todayRecs.length,i:"✅",c:"var(--g)"},{l:"Дутуу",v:unsigned.length,i:"⚠️",c:"#d35400"},{l:"Гүйцэтгэл",v:_totPct+"%",i:"📈",c:_totPct>=80?"var(--g)":"#e74c3c"}].forEach(s=>{
+      [{l:"Нийт",v:_totAll,i:"👥",c:"var(--ink)"},{l:"Ирсэн",v:todayRecs.length,i:"✅",c:"var(--g)"},{l:"Дутуу",v:unsigned.length,i:"⚠️",c:"#d35400"},{l:"Гүйцэтгэл",v:_totPct+"%",i:"📈",c:_totPct>=80?"var(--g)":"#e74c3c"}].forEach(s=>{
         const b=el("div",{className:"stat-box"});b.appendChild(h("div",{className:"stat-ico"},[s.i]));b.appendChild(h("div",{className:"stat-val",style:{color:s.c,fontSize:"20px"}},[String(s.v)]));b.appendChild(h("div",{className:"stat-lbl"},[s.l]));_bigStat.appendChild(b);
       });
       _statCard.appendChild(_bigStat);
@@ -3440,7 +3449,7 @@ function renderManager(onLogout){
       // ── Шинэ ажилтан нэмэх ──
       const addSection=el("div",{style:{background:"var(--gp)",borderRadius:"12px",padding:"14px",marginBottom:"14px",border:"1px solid var(--bdr)"}});
       addSection.appendChild(h("div",{style:{fontSize:"12px",fontWeight:"700",color:"var(--g)",marginBottom:"10px"}},["+ Шинэ ажилтан нэмэх"]));
-      const ag=el("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"6px",marginBottom:"6px"}});
+      const ag=el("div",{style:{display:"grid",gridTemplateColumns:"minmax(0,1fr) minmax(0,1fr)",gap:"6px",marginBottom:"6px"}});
       const nn=el("input",{className:"inp",type:"text",placeholder:"Бүтэн нэр"});
       const nd=el("select",{className:"sel"});
       const defOpt=el("option",{value:""},[" — Тасаг сонгох — "]);defOpt.disabled=true;defOpt.selected=true;nd.appendChild(defOpt);
@@ -3493,8 +3502,7 @@ function renderManager(onLogout){
             row.appendChild(av);
             row.appendChild(h("div",{style:{flex:"1"}},[
               h("div",{style:{display:"flex",alignItems:"center",gap:"6px"}},[
-                h("div",{className:"w-name"},[w.name]),
-                el("span",{style:{background:"#f59e0b",color:"#fff",padding:"1px 7px",borderRadius:"20px",fontSize:"10px",fontWeight:"700"}},["🆕 Шинэ"])
+                h("div",{className:"w-name"},[w.name])
               ]),
               h("div",{className:"w-sub"},[w.department+" · "+w.position+(w.phone?" | 📞"+w.phone:"")])
             ]));
